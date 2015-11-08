@@ -1,3 +1,4 @@
+'use strict';
 Tasks = new Mongo.Collection("tasks");
 
 if (Meteor.isClient) {
@@ -10,6 +11,7 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-task": function (event) {
+            var i;
             // Prevent default browser from submit
             event.preventDefault();
 
@@ -17,10 +19,12 @@ if (Meteor.isClient) {
             var text = event.target.text.value;
 
             // Insert a task into the collection
-            Tasks.insert({
-                text: text,
-                createdAt: new Date() // current time
-            });
+            for (i = 0; i < 1; i++) {
+                Tasks.insert({
+                    text: text,
+                    createdAt: new Date() // current time
+                });
+            }
 
             // clear form
             event.target.text.value = "";
